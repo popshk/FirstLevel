@@ -40,6 +40,10 @@ public class TicTacToe {
                 if (m[mi][mj].equals("-")) {
                     m[mi][mj] = value;
                     ArrayToString(m);
+                    if (NoWinner(m)){
+                        System.out.println(":(......");
+                        break;
+                    }
                     if (WinnerTest(m,value)){
                         System.out.println(value+" - WINNER!!!");
                             break;
@@ -91,6 +95,15 @@ public class TicTacToe {
 
         if (toLeft||toRight) return true;
         return false;
+    }
+
+    private static boolean NoWinner(String [][] m){
+        for (int i=0;i<m.length;i++){
+            for (int j=0;j<m.length;j++){
+                if (m[i][j].equals("-")) return false;
+            }
+        }
+        return true;
     }
 
 }

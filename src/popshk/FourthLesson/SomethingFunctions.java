@@ -7,8 +7,10 @@ public class SomethingFunctions {
         String x = "x";
         int y = 10;
         double z = 9.8;
+
         int [] m1 = {1,3,5,7,9};
         int [] m2 = {0,2,4,6,8};
+
         double [] d1 = {1.8,3.6,5.4,7.2,9.0};
         double [] d2 = {0.9,2.7,4.5,6.3,8.1};
 

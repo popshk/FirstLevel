@@ -39,11 +39,11 @@ public class TicTacToe {
 
                 if (m[mi][mj].equals("-")) {
                     m[mi][mj] = value;
+                    ArrayToString(m);
                     if (WinnerTest(m,value)){
                         System.out.println(value+" - WINNER!!!");
                             break;
                     }
-                    ArrayToString(m);
                 } else{
                     System.out.println("The cell is occupied !!!");
                     ArrayToString(m);

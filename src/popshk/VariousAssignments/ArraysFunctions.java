@@ -22,16 +22,61 @@ public class ArraysFunctions {
 
         System.out.println(Arrays.toString(b1));
         System.out.println(Arrays.toString(b2));
-        System.out.println(Arrays.toString(m));
+        System.out.println(toStringForIntArray(m));
+        System.out.println(equalsByteArray(b1,b2));
+        System.out.println(equalsByteArray(b1,b1));
+
+        int [] a = {1,1,2,3,2,4,5,6,4};
+
+        noReplay(a);
+
+        int [] x = {1,3,5,7,9,3,6,8};
+        int [] y = {0,2,4,6};
+
+        System.out.println(toStringForIntArray(TwoToOne(x,y)));
     }
 
     private static boolean equalsByteArray(byte [] m1 , byte [] m2){
-            return false;
+        if (m1.length!=m2.length) return false;
+
+        for (int i=0;i<m1.length;i++){
+            if(m1[i]!=m2[i]) return false;
+        }
+            return true;
     }
 
     private static String toStringForIntArray(int [] m){
         StringBuilder s = new StringBuilder("[");
+
+            for (int i=0;i<m.length;i++){
+                s.append(m[i]);
+                if (i!=m.length-1) s.append(",").append(" ");
+            }
+
             return s.append("]").toString();
+    }
+
+    private static void noReplay(int [] m){
+        int counter;
+
+        for (int i=0;i<m.length;i++){
+            counter=0;
+                for (int j=0;j<m.length;j++){
+                    if (m[i]==m[j]) counter++;
+                }
+         if(counter==1) System.out.print(m[i]+", ");
+        }
+    }
+
+    private static int [] TwoToOne(int [] a, int [] b){
+        int [] m =new int[a.length+b.length];
+
+        System.arraycopy(a,0,m,0,a.length);
+        System.arraycopy(b,0,m,a.length,b.length);
+
+        Arrays.sort(m);
+
+        return m;
     }
 
 }

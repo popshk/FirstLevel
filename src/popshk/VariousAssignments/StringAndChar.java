@@ -6,9 +6,12 @@ public class StringAndChar {
     public static void main(String[] args) {
         reposition();
 
-        String text = "ОЛЕГ-северное животное.В летнее время оленям в тайге жарко,а в горах даже в июле холодно.\n" +
-                "Олень как бы создан для северных просторов,жёсткого ветра,длинных морозных ночей.Олень легко бежит вперёд по тайге,подминает под себя кусты,переплывает быстрые реки.Олень не тонет,потому что каждая его шерстинка-это длинная трубочка,которую внутри наполняет воздух..\n" +
-                "Нос у оленя покрыт серебристой шёрсткой.Если бы шерсти на носу не было,олень бы его отморозил.";
+        String text = "ОЛЕНЬ-северное животное.В летнее время оленям в тайге жарко,а в горах даже в пах июле холодно.\n" +
+                "Олень как бы создан для северных пах просторов,жёсткого ветра,длинных ПАХ морозных ночей.Олень легко бежит вперёд по тайге,подминает под себя кусты,переплывает быстрые реки.Олень не тонет,потому что каждая его шерстинка-это длинная трубочка,которую внутри наполняет воздух..\n" +
+                "Нос у оленя покрыт серебристой шёрсткой.Если бы шерсти пах на носу не было,олень бы его отморозил.";
+
+       HowManyTimeRepeat(text,"в");
+
     }
 
 
@@ -20,24 +23,22 @@ public class StringAndChar {
         System.out.println(res);
     }
 
-    static String HowManyTimeRepeat(String text,String verb){
-        int count; String buf;
-        text.toLowerCase(); verb.toLowerCase();
+    static void HowManyTimeRepeat(String text,String verb){
+        int count,result=0;
 
-        char [] textC = text.toCharArray();
-
-        char [] verbC = verb.toCharArray();
+        char [] textC = text.toLowerCase().toCharArray();
+        char [] verbC = verb.toLowerCase().toCharArray();
 
         for (int i=0;i<textC.length;i++){
-            buf = null;
-            for (int j=0;j<verbC.length;j++){
-                if (textC[i]==verbC[j]) buf +=textC[i];
-
+            count=0;
+            if (textC[i]==verbC[0]) {
+                for (int j = 0; j < verbC.length; j++) {
+                    if (j==verbC.length-1 && textC[i+j]==verbC[j]&& textC[i+verbC.length]==' ') count++;
+                }
             }
-
+            if (count==1) result++;
         }
-
-        return "This verb \"" + verb +"\" repeat "+/*count+*/"times";
-
+        System.out.println("This verb \""+verb+"\" repeated " + result + " times");
     }
+
 }

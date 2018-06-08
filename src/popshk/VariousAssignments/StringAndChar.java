@@ -1,6 +1,5 @@
 package popshk.VariousAssignments;
 
-import java.util.Arrays;
 
 public class StringAndChar {
     public static void main(String[] args) {

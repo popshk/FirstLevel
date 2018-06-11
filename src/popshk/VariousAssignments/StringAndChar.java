@@ -1,15 +1,18 @@
 package popshk.VariousAssignments;
 
+import java.util.Arrays;
 
 public class StringAndChar {
     public static void main(String[] args) {
         reposition();
 
         String text = "ОЛЕНЬ-северное животное.В летнее время оленям в тайге жарко,а в горах даже в пах июле холодно.\n" +
-                "Олень как бы создан для северных пах просторов,жёсткого ветра,длинных ПАХ морозных ночей.Олень легко бежит вперёд по тайге,подминает под себя кусты,переплывает быстрые реки.Олень не тонет,потому что каждая его шерстинка-это длинная трубочка,которую внутри наполняет воздух..\n" +
+                "Олень как бы создан для северных пах просторов,жёсткого ветра,длинных ПАХ морозных ночей.Олень легко бежит вперёд по тайге,подминает под себя кусты,переплывает быстрые реки.Олень не тонет,потому что каждая его шерстинка-это длинная трубочка,которую внутри наполняет воздух.\n" +
                 "Нос у оленя покрыт серебристой шёрсткой.Если бы шерсти пах на носу не было,олень бы его отморозил.";
 
        HowManyTimeRepeat(text,"в");
+
+      shortAndLong(text);
 
     }
 
@@ -23,21 +26,28 @@ public class StringAndChar {
     }
 
     static void HowManyTimeRepeat(String text,String verb){
-        int count,result=0;
+        int counter = 0;
 
-        char [] textC = text.toLowerCase().toCharArray();
-        char [] verbC = verb.toLowerCase().toCharArray();
+        String s = text.replace(',',' ').replace('.',' ').replace('-',' ').toLowerCase();
 
-        for (int i=0;i<textC.length;i++){
-            count=0;
-            if (textC[i]==verbC[0]) {
-                for (int j = 0; j < verbC.length; j++) {
-                    if (j==verbC.length-1 && textC[i+j]==verbC[j]&& textC[i+verbC.length]==' ') count++;
-                }
-            }
-            if (count==1) result++;
+        String []textArray = s.split(" ");
+
+        for (int i=0;i<textArray.length;i++){
+            if (textArray[i].equals(verb)) counter++;
         }
-        System.out.println("This verb \""+verb+"\" repeated " + result + " times");
+
+        System.out.println("This verb \""+verb+"\" repeated " + counter + " times");
     }
 
+    static void shortAndLong(String text){
+       String s = text.replace(',',' ').replace('.',' ').replace('-',' ');
+        String []textArray = s.split(" ");
+            String min,max ; max = min = textArray[0];
+            for (int i=0;i<textArray.length;i++) {
+                if (max.length()<textArray[i].length()) max = textArray[i];
+                if (min.length()>textArray[i].length()) min = textArray[i];
+            }
+        System.out.println(Arrays.toString(textArray));
+        System.out.println(max+" "+min);
+    }
 }

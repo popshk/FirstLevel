@@ -7,7 +7,7 @@ public class StringAndChar {
                 "Олень как бы создан для северных пах просторов,жёсткого ветра,длинных ПАХ морозных     ночей.Олень легко бежит вперёд по тайге,подминает под себя кусты,переплывает быстрые реки.Олень не тонет,потому что каждая его шерстинка-это длинная трубочка,которую внутри наполняет воздух.\n" +
                 "Нос у оленя покрыт серебристой       шёрсткой.Если бы шерсти пах на носу не было,олень бы его отморозил.";
 
-        String text1 = "ОЛЕНЬ-северное животное.  В летнее время оленям  в тайге жарко, а в горах";
+        String text1 = "  ОЛЕНЬ-северное животное.  В летнее время оленям  в тайге жарко, а в горах   ";
        HowManyTimeRepeat(text,"пах");
 
        shortAndLong(text);
@@ -18,6 +18,8 @@ public class StringAndChar {
         System.out.println(myIndexOf(text1,"время"));
 
         System.out.println(mySubstring(text,0,15));
+
+        System.out.println(myTrim(text1));
 
     }
 
@@ -93,9 +95,11 @@ public class StringAndChar {
     static String myTrim(String string){
         String s = string;
         char [] c = s.toCharArray();
-            if (c[0]==' ' && c[c.length-1]==' '){
+        StringBuilder sb = new StringBuilder();
+            if (c[0]!=' ' && c[c.length-1]!=' ') return s;
+                for (int i=0;i<c.length;i++){
 
-            }
-                return string;
+                }
+                return sb.toString();
     }
 }

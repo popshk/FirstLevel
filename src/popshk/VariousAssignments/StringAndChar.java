@@ -94,12 +94,29 @@ public class StringAndChar {
 
     static String myTrim(String string){
         String s = string;
+        int count1 = 0;
+        int count2 = 0;
         char [] c = s.toCharArray();
         StringBuilder sb = new StringBuilder();
-            if (c[0]!=' ' && c[c.length-1]!=' ') return s;
-                for (int i=0;i<c.length;i++){
 
+            if (c[0]!=' ' && c[c.length-1]!=' ') return s;
+
+                for (int i=0;i<c.length;i++){
+                    if(c[i]==' '){
+                        count1++;
+                    }else if (c[i]!=' ') break;
                 }
+
+                for (int j=c.length-1;0<=j;j--){
+                    if (c[j]==' '){
+                        count2++;
+                    }else if (c[j]!=' ') break;
+                }
+
+                for (int k=count1;k<c.length-count2;k++){
+                    sb.append(c[k]);
+                }
+
                 return sb.toString();
     }
 }

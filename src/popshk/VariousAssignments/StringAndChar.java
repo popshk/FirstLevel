@@ -21,6 +21,9 @@ public class StringAndChar {
 
         System.out.println(myTrim(text1));
 
+        int test = myParseInt("-677846");
+        System.out.println(test);
+
     }
 
     static void HowManyTimeRepeat(String text,String verb){
@@ -38,7 +41,7 @@ public class StringAndChar {
         String []textArray = clearVerbArrayString(text);
         String min,max ; max = min = textArray[0];
             for (int i=0;i<textArray.length;i++) {
-                    if (textArray[i].equals("") || textArray[i].equals(" ")) continue;
+                    if (textArray[i].isEmpty() || textArray[i].equals(" ")) continue;
                         counter++;
                     if (max.length() < textArray[i].length()) max = textArray[i];
                     if (min.length() > textArray[i].length()) min = textArray[i];
@@ -85,9 +88,8 @@ public class StringAndChar {
     static String mySubstring(String string,int from,int to){
         String s = string;
         StringBuilder sb = new StringBuilder();
-        char [] c = s.toCharArray();
             for (int i=from;i<to-1;i++){
-                sb.append(c[i]);
+                sb.append(s.charAt(i));
             }
                 return sb.toString();
     }
@@ -96,27 +98,47 @@ public class StringAndChar {
         String s = string;
         int count1 = 0;
         int count2 = 0;
-        char [] c = s.toCharArray();
         StringBuilder sb = new StringBuilder();
 
-            if (c[0]!=' ' && c[c.length-1]!=' ') return s;
+            if (s.charAt(0)!=' ' && s.charAt(s.length()-1)!=' ') return s;
 
-                for (int i=0;i<c.length;i++){
-                    if(c[i]==' '){
+                for (int i=0;i<s.length();i++){
+                    if(s.charAt(i)==' '){
                         count1++;
-                    }else if (c[i]!=' ') break;
+                    }else if (s.charAt(i)!=' ') break;
                 }
 
-                for (int j=c.length-1;0<=j;j--){
-                    if (c[j]==' '){
+                for (int j=s.length()-1;0<=j;j--){
+                    if (s.charAt(j)==' '){
                         count2++;
-                    }else if (c[j]!=' ') break;
+                    }else if (s.charAt(j)!=' ') break;
                 }
 
-                for (int k=count1;k<c.length-count2;k++){
-                    sb.append(c[k]);
+                for (int k=count1;k<s.length()-count2;k++){
+                    sb.append(s.charAt(k));
                 }
 
                 return sb.toString();
+    }
+
+    static int myParseInt(String string) throws NumberFormatException{
+        int minusChecker=0;int whatNumb; int result=0; int digit =1;
+        boolean isMinus = false;
+        if (string.charAt(0)=='-'){
+            minusChecker=1;
+            isMinus =true;
+        }
+
+        for (int i=string.length()-1;i>=minusChecker;i--){
+            if (string.charAt(i)<'0' || string.charAt(i)>'9') throw new NumberFormatException(":(");
+                whatNumb=0;
+                if (i!=string.length()-1) digit*=10;
+            for (char c='0';c<='9';c++){
+                if (string.charAt(i)==c) result += whatNumb*digit;
+                whatNumb++;
+            }
+        }
+            if (isMinus) return result*-1;
+                return result;
     }
 }
